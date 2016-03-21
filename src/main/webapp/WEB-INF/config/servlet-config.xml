@@ -11,6 +11,10 @@
                            http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
     <mvc:annotation-driven />
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+              p:paramName="language" />
+    </mvc:interceptors>
     <mvc:resources mapping="/pdfs/**" location="pdfs" />
 
     <context:component-scan base-package="com.cemiv.controller" />
@@ -22,6 +26,11 @@
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource"
           p:basename="messages">
+    </bean>
+
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.SessionLocaleResolver"
+          p:defaultLocale="en">
     </bean>
 
 </beans>
