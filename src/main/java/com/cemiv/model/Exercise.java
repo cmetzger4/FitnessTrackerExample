@@ -1,13 +1,19 @@
 package com.cemiv.model;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * Created on: 3/18/2016
  * Author    : cmetzger4
  */
 public class Exercise {
 
+    @Range(min = 1, max = 120)
     private int minutes;
 
+    @NotNull
     private String activity;
 
     public String getActivity() {
